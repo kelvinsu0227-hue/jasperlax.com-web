@@ -1,0 +1,6 @@
+node_modules/
+dist/
+qa/
+.vite/
+.sites-runtime/
+.env*
