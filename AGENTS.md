@@ -57,3 +57,5 @@ Top navigation first entry replaces Routes with My Booking, linking to localized
 Homepage FAQ follows user reference: full-width heading, pill category tabs Booking/service, Airport pickup, Airport drop-off, selected category accordion questions, centered booking action. Blue brand style; retain all19 answers in HTML and translations. Supersedes nested category accordions.
 
 Ultrawide fix: home composition, header and footer capped at1800px and centered; desktop hero height grows660-800px. Prevent 3440px cover scaling from cropping the Sienna roof. Preserve mobile picture/layout.
+
+Home replaces How booking works with Before you book, One Way/Airport Pick Up/Airport Drop Off instructions, four expandable policy groups and the authorized Moovs iframe below. Reuse confirmed waiting/buffer/confirmation terms. Do not invent included meet-and-greet charges or payment terms. Home Book actions scroll to its form. All5 languages.
