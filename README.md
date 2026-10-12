@@ -1,4 +1,4 @@
-# JasperLAX.com Web 1.0
+# JasperLAX.com Web 1.1
 
 Responsive Toyota Sienna airport transfer website for JasperLAX.com.
 
@@ -32,6 +32,21 @@ Build output: `dist/client` contains the prerendered pages; `dist/server/index.j
 
 Generated vehicle scenes are illustrative; Toyota reference-image details are in `public/assets/gallery-sources.txt`. Banner variants are in `public/assets`.
 
-Booking is provided by the configured external Moovs portal. Uploading this repository does not submit bookings or change Moovs account settings. Preview indexing restrictions are preserved.
+Booking is provided by the configured external Moovs portal. Uploading this repository does not submit bookings or change Moovs account settings. All public website content is indexable as described below.
 
 No automatic publishing workflow is configured in this repository.
+
+## SEO / AI crawler access
+
+All public website builds are production. There is no separate non-indexable preview build.
+
+- Every public page, including My Booking instructions, permits indexing and is included in the sitemap.
+- robots.txt uses `User-agent: *` and `Allow: /`. This permits all compliant crawler identities, including AI search and training bots, without per-bot exclusions.
+- Source HTML and prerendered pages use `index, follow, max-image-preview:large`.
+- Local Vite servers do not add a blocking X-Robots-Tag. Hosting environment variables do not change indexing policy.
+- `vercel.json` prepares a permanent www-to-apex redirect consistent with canonical URLs; verify it after an authorized deployment.
+- Builds validate crawl settings, sitemap membership, canonical URLs and translated FAQ content. Run `pnpm test:seo` for crawler policy checks.
+
+Publishing requires the user's explicit instruction. Pushing `main` to GitHub can trigger the connected Vercel production deployment; do not push during local review.
+
+After publication, verify live robots/meta/redirect responses, submit `https://jasperlax.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools, then inspect the homepage and four region URLs. Submission requires access to those accounts and is not completed by source changes. Crawling, indexing, AI citations and bot traffic are not guaranteed by an Allow rule; real traffic must be checked using hosting logs and webmaster reports.

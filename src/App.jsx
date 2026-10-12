@@ -1,3 +1,4 @@
+import RoutePlanning from './RoutePlanning.jsx';
 import HomeBooking from './HomeBooking.jsx';
 import AirportGuide from './AirportGuide.jsx';
 import {faqGroups} from './faq.js';
@@ -35,9 +36,21 @@ export function metadata(fullPath) {
     '/policies/': 'Booking & Service Information',
     '/privacy/': 'Privacy Information'
   };
+  const descriptions={
+    '/routes/':'Airport rides to and from LAX across four Southern California service areas.',
+    '/book/':'Book a private Toyota Sienna transfer to or from LAX. Enter your trip details and review your quote in Moovs.',
+    '/my-booking/':'Sign in to Moovs to view your reservations.',
+    '/toyota-sienna/':'The Sienna accommodates up to 6 passengers and at least 4 pieces of luggage. Its spacious, flexible interior suits most travel needs.',
+    '/faq/':'Clear answers about your vehicle, service areas, and booking.',
+    '/lax-pickup-guide/':'A practical guide to meeting your chauffeur, planning your waiting time, and getting to your LAX terminal.',
+    '/about/':'JasperLAX focuses on private Toyota Sienna transfers to and from LAX.',
+    '/contact/':'Talk to JasperLAX about your airport trip.',
+    '/policies/':'Confirm your trip details and service terms with JasperLAX.',
+    '/privacy/':'Privacy information.'
+  };
   return {
     title: `${lang==='en'?(r?`${r[1]} to LAX Private Sienna Transfers`:t[path]||'Page not found'):r?`${translate(r[1],lang)} ↔ LAX | ${translate('Private Toyota Sienna airport transfers',lang)}`:translate({'/':'Private Toyota Sienna airport transfers','/routes/':'Find your route.','/book/':'Book your ride','/my-booking/':'My Booking','/toyota-sienna/':'Meet your Sienna.','/faq/':'Questions before your ride?','/lax-pickup-guide/':'LAX pickup & drop-off guide','/about/':'About','/contact/':'Contact','/policies/':'Policies','/privacy/':'Privacy'}[path]||'Home',lang)} | JasperLAX.com`,
-    description: translate(r ? `Private Toyota Sienna airport transfers between ${r[1]} and LAX, in either direction.` : 'JasperLAX offers Toyota Sienna transfers to and from LAX in Los Angeles, Orange County, San Bernardino, and Riverside.',lang)
+    description: translate(r ? `Private Toyota Sienna airport transfers between ${r[1]} and LAX, in either direction.` : descriptions[path] || 'JasperLAX offers Toyota Sienna transfers to and from LAX in Los Angeles, Orange County, San Bernardino, and Riverside.',lang)
   };
 }
 const wa = (text = "Hi JasperLAX, I'd like to ask about a Toyota Sienna transfer to or from LAX.") => `https://wa.me/${config.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -64,11 +77,12 @@ function RouteList() {
   const lang = useContext(LanguageContext);
   return translateTree(<div className="route-list">{routes.map(([s, n, price]) => <a className="route-row" href={`/routes/${s}/`} key={s}><span><span className="route-overline">TO / FROM LAX</span><span className="city">{n}<span className="desktop-route"> ↔ LAX</span></span></span><strong><small>From </small>${price}</strong><ArrowRight size={21} /></a>)}</div>, lang);
 }
-function Faq({guide=false,compact=false}) {
+function Faq({guide=false,compact=false,collapsed=false}) {
   const lang=useContext(LanguageContext);
   const [activeCategory,setActiveCategory]=useState("booking-vehicle");
   const groups=guide?faqGroups.slice(0,2):faqGroups;
   const list=group=><div className="faq-list">{group.items.map(([q,a])=><details key={q}><summary>{q}<span aria-hidden="true" className="faq-mark"><Plus size={16} className="faq-plus"/><Minus size={16} className="faq-minus"/></span></summary><p>{a}</p></details>)}</div>;
+  if(collapsed) return translateTree(<div className="faq-groups faq-collapsed">{groups.map(group=><details className="faq-category" name="route-faq-category" key={group.id}><summary><span>{group.title}</span><span className="faq-category-count">{group.items.length}</span><CaretDown size={20}/></summary>{list(group)}</details>)}</div>,lang);
   if(compact){
     const categories=[groups[2],groups[0],groups[1]];
     const labels={'booking-vehicle':'Booking & service',arrivals:'Airport pickup',departures:'Airport drop-off'};
@@ -131,7 +145,7 @@ function Page({
   const r = routes.find(([s]) => path === `/routes/${s}/`);
   if (path === '/my-booking/') return translateTree(<main className="inner-page my-booking-page"><div className="breadcrumb"><a href="/">Home</a> / My Booking</div><h1>My Booking</h1><p className="lead">Sign in to Moovs to view your reservations.</p><section className="my-booking-card"><h2>Already booked?</h2><ol><li>Open the Moovs customer portal below.</li><li>If you see a booking form, select Login. Use the phone number or email address from your reservation and enter the verification code.</li><li>Once signed in, select Orders from the account menu to view your bookings.</li></ol><a className="primary" href={config.customerPortalUrl} {...ext}>Open Moovs · My bookings<ArrowUpRight size={20}/></a><p className="muted">Moovs redirects guests to its booking form before login. Your reservations are available after you sign in.</p></section><section className="inner-section"><h2>Need help finding your booking?</h2><p>You can also use the reservation link in your confirmation email, or contact our team.</p><Link href={wa()} external>Chat with us on WhatsApp</Link></section></main>,lang);
   if (path === '/book/') return translateTree(<main className="inner-page booking-page"><div className="booking-page-heading"><h1>Book your ride</h1><Link href="/">Back to home</Link></div><iframe className="moovs-booking-frame" src={config.bookingEmbedUrl} title="JasperLAX online booking" allow="payment"/></main>,lang);
-  if (r || path === '/routes/') return translateTree(<main className="inner-page"><div className="breadcrumb"><a href="/">Home</a> / <a href="/routes/">Routes</a>{r && ` / ${r[1]}`}</div><span className="eyebrow">PRIVATE TOYOTA SIENNA TRANSFERS</span><h1>{r ? `${r[1]} ↔ LAX` : 'Find your route.'}</h1><p className="lead">{r ? `Private Toyota Sienna airport transfers between ${r[1]} and LAX, in either direction.` : 'Airport rides to and from LAX across four Southern California service areas.'}</p>{r ? <RouteBooking route={r}/> : <div className="inline-book"><Book onBook={onBook} /><span>Starting rates. Final quote depends on your trip.</span></div>}{r ? <section className="inner-section"><h2>Plan your airport ride.</h2><p>Share your exact pickup and drop-off addresses, travel date, time, and flight details with JasperLAX so we can discuss your trip. Rates and service details are confirmed before you book.</p><Link href={wa(`Hi JasperLAX, I'd like to ask about a Toyota Sienna transfer between ${r[1]} and LAX.`)} external>Ask about this route</Link><div className="related"><Link href="/toyota-sienna/">Explore the vehicle</Link><Link href="/lax-pickup-guide/">Plan your LAX pickup</Link></div></section> : <RouteList />}<section className="inner-section"><h2>Questions before your ride?</h2><Faq /></section>{r && <section className="inner-section"><h2>Other service areas.</h2><RouteList /></section>}</main>, lang);
+  if (r || path === '/routes/') return translateTree(<main className="inner-page"><div className="breadcrumb"><a href="/">Home</a> / <a href="/routes/">Routes</a>{r && ` / ${r[1]}`}</div><span className="eyebrow">PRIVATE TOYOTA SIENNA TRANSFERS</span><h1>{r ? `${r[1]} ↔ LAX` : 'Find your route.'}</h1><p className="lead">{r ? `Private Toyota Sienna airport transfers between ${r[1]} and LAX, in either direction.` : 'Airport rides to and from LAX across four Southern California service areas.'}</p>{r ? <RouteBooking route={r}/> : <div className="inline-book"><Book onBook={onBook} /><span>Starting rates. Final quote depends on your trip.</span></div>}{r ? <RoutePlanning route={r} onBook={onBook} Book={Book} contactUrl={wa(`Hi JasperLAX, I'd like to ask about a Toyota Sienna transfer between ${r[1]} and LAX.`)}/> : <RouteList />}<section className="inner-section"><h2>Questions before your ride?</h2><Faq collapsed={!!r}/></section>{r && <section className="inner-section"><h2>Other service areas.</h2><RouteList /></section>}</main>, lang);
   if (path === '/toyota-sienna/') return translateTree(<main className="inner-page"><div className="breadcrumb"><a href="/">Home</a> / Our Sienna</div><h1>Meet your Sienna.</h1><p className="lead">The Sienna accommodates up to 6 passengers and at least 4 pieces of luggage. Its spacious, flexible interior suits most travel needs.</p><p className="muted">Professional chauffeurs. Professional service.</p><Gallery /><section className="inner-section"><h2>Your trip, your details.</h2><p>Passenger and luggage requirements depend on vehicle configuration. Contact JasperLAX to confirm that your group and bags can be accommodated before booking.</p><Book onBook={onBook} /></section><Upgrade /></main>, lang);
   if (path === '/lax-pickup-guide/') return <AirportGuide onBook={onBook} Book={Book} faq={<Faq guide/>}/>;
   if (path === '/faq/') return translateTree(<main className="inner-page"><div className="breadcrumb"><a href="/">Home</a> / Q&A</div><h1>Questions before your ride?</h1><p className="lead">Clear answers about your vehicle, service areas, and booking.</p><Faq full /><section className="inner-section"><h2>Still have a question?</h2><Link href={wa()} external>Chat with us on WhatsApp</Link></section></main>, lang);

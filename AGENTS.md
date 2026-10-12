@@ -1,6 +1,6 @@
 # Prototype Instructions
 
-This is a responsive mobile-first website. Latest approved decisions: replace 360 with three exterior and three interior reference photos; replace About the Sienna with Book; remove Our Sienna from top navigation. Brand wordmark JasperLAX.com. Starting rates: Los Angeles $99, Orange County $119, San Bernardino $129, Riverside $129; hero From $99. Translate into English, Simplified Chinese, Spanish, Japanese and Korean using separate locale URLs. Preserve Sienna-only service, new independent Moovs account, WhatsApp +1 626 704 2786 and secondary Escalade/group referral. Keep unpublished preview noindex.
+This is a responsive mobile-first website. Latest approved decisions: replace 360 with three exterior and three interior reference photos; replace About the Sienna with Book; remove Our Sienna from top navigation. Brand wordmark JasperLAX.com. Starting rates: Los Angeles $99, Orange County $119, San Bernardino $129, Riverside $129; hero From $99. Translate into English, Simplified Chinese, Spanish, Japanese and Korean using separate locale URLs. Preserve Sienna-only service, new independent Moovs account, WhatsApp +1 626 704 2786 and secondary Escalade/group referral. All public versions now use production indexing and wildcard crawler access. Do not publish or push without explicit user instruction.
 
 Run the local server yourself and open the preview in the browser available to this environment. Do not give the user server-start instructions when you can run it.
 
@@ -18,7 +18,7 @@ Interior panorama: preserve selected camera angle; latest request all-black leat
 
 Approved vehicle copy: up to 6 passengers and at least 4 pieces of luggage; spacious flexible cabin suits most travel needs. Supporting line Professional chauffeurs. Professional service. Business gallery photo includes a chauffeur assisting passengers.
 
-Interior third image replaces dashboard with open cargo area loaded with luggage. Q&A uses confirmed JasperLAX waiting terms: 30min domestic/60min international from actual landing, agreed buffer before overtime, USD15 per15min overtime (Jasperlimo differs at25; never inherit its fee). Expand home/region FAQ and full Q&A in all5 languages, preserve preview booking pending state.
+Interior third image replaces dashboard with open cargo area loaded with luggage. Q&A uses confirmed JasperLAX waiting terms: 30min domestic/60min international from actual landing, agreed buffer before overtime, USD15 per15min overtime (Jasperlimo differs at25; never inherit its fee). Expand home/region FAQ and full Q&A in all5 languages, preserve the currently authorized Moovs booking integration.
 
 LAX arrivals/departures guide rebuilt with schematic meeting illustrations, whitecolumnexamples B8/4A/7F (confirm signs/chauffeur), conditionaldeparturespickup20mintrafficbenefit, flightmonitoring, domesticbuffer30+30=60min, customerSMS/WhatsApp, chauffeur15minbeforepickup,15minfreefromscheduledpickup,, extra stops bydistance/time, airline terminaldropoff. All19FAQ grouped Arrivals/Departures/Booking; guide10airportFAQ. Same5languages and visible matchingFAQschema.
 
@@ -59,3 +59,10 @@ Homepage FAQ follows user reference: full-width heading, pill category tabs Book
 Ultrawide fix: home composition, header and footer capped at1800px and centered; desktop hero height grows660-800px. Prevent 3440px cover scaling from cropping the Sienna roof. Preserve mobile picture/layout.
 
 Home replaces How booking works with Before you book, One Way/Airport Pick Up/Airport Drop Off instructions, four expandable policy groups and the authorized Moovs iframe below. Reuse confirmed waiting/buffer/confirmation terms. Do not invent included meet-and-greet charges or payment terms. Home Book actions scroll to its form. All5 languages.
+
+User instruction: future edits stay local. Do not publish or push GitHub until user explicitly asks to publish.
+Region detail pages: replace Plan your airport ride with region-specific three-column planning, family and business information, confirmed JasperLAX waiting fees ($15/15min), child seats subject to confirmation without inventing fee. Region FAQ categories collapsed by default, one category open at a time. All four regions and five languages. Reference Jasperlimo pricing/vehicle claims must not be copied to Sienna-only JasperLAX.
+
+Superseded SEO history (see latest correction below): production build indexes public content, My Booking stays noindex; preview and development stay noindex. VERCEL_ENV non-production automatically selects preview. Production robots allows search including OAI-SearchBot, retains GPTBot training opt-out, and declares sitemap. www redirect planned via vercel.json. Do not push or publish without explicit user instruction.
+
+Latest SEO/GEO correction supersedes prior preview rules: user states all versions are production and wants all AI crawler access. All75 public pages including My Booking instructions are indexable and in sitemap. Wildcard Allow, no per-bot exclusions (GPTBot training is now allowed too). Remove preview build/profile and X-Robots-Tag restrictions. This is not permission to publish: keep local until explicit publishing instruction.

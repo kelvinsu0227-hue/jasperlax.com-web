@@ -1,14 +1,23 @@
 import {readFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
-import {paths} from '../dist/ssr/entry-server.js';
+import {paths,parseLocale} from '../dist/ssr/entry-server.js';
+import {robotsMeta,robotsFile} from './seo-policy.mjs';
+const {profile}=JSON.parse(readFileSync('dist/seo-build.json','utf8'));
+assert.equal(profile,'production','All builds are production');
+const sitemap=readFileSync('dist/client/sitemap.xml','utf8');
+assert.equal(readFileSync('dist/client/robots.txt','utf8'),robotsFile(),'Crawler policy matches build');
 for (const route of paths) {
   const html = readFileSync(`dist/client${route}index.html`, 'utf8');
   assert.match(html, /<h1>/, `${route}: readable heading`);
-  assert.match(html, /noindex,\s*nofollow/, `${route}: preview indexing disabled`);
+  assert.ok(html.includes(`content="${robotsMeta()}"`),`${route}: correct ${profile} indexing`);
+  assert.equal(sitemap.includes(`<loc>https://jasperlax.com${route}</loc>`),true,`${route}: sitemap includes every public page`);
   assert.ok(html.includes(`href="https://jasperlax.com${route}"`), `${route}: canonical`);
   assert.ok(html.includes('wa.me/16267042786'), `${route}: confirmed WhatsApp`);
   const graph = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
   assert.ok(graph['@graph'].every(item => !('offers' in item)), 'Unconfirmed prices cannot enter schema');
+  const organization=graph['@graph'].find(item=>item['@type']==='Organization');
+  assert.equal(organization.address.addressLocality,'San Marino',`${route}: confirmed business city`);
+  assert.ok(html.includes('property="og:url"')&&html.includes('property="og:image"'),`${route}: share metadata`);
   const faq=graph['@graph'].find(item=>item['@type']==='FAQPage');
   if(faq){
     assert.equal(faq.mainEntity.length, /\/lax-pickup-guide\/$/.test(route)?10:19, `${route}: visible FAQ count`);
@@ -42,4 +51,4 @@ for (const [lang,title] of [['zh','轻松往返'],['es','sin complicaciones'],['
  assert.ok(html.includes(`href="/${lang}/routes/"`),`${lang}: links preserve language`);
  assert.ok(html.includes(`<html lang="${lang}">`),`${lang}: language attribute`);
 }
-console.log(`Passed crawlable HTML, canonical, preview indexing, price and WhatsApp checks for ${paths.length} pages.`);
+console.log(`Passed crawlable HTML, canonical, ${profile} indexing, price and WhatsApp checks for ${paths.length} pages.`);
