@@ -55,3 +55,5 @@ My Booking correction: public Moovs root redirects to new booking. Actual Orders
 Top navigation first entry replaces Routes with My Booking, linking to localized /my-booking/ in desktop and mobile menu. Route discovery remains in homepage and footer.
 
 Homepage FAQ follows user reference: full-width heading, pill category tabs Booking/service, Airport pickup, Airport drop-off, selected category accordion questions, centered booking action. Blue brand style; retain all19 answers in HTML and translations. Supersedes nested category accordions.
+
+Ultrawide fix: home composition, header and footer capped at1800px and centered; desktop hero height grows660-800px. Prevent 3440px cover scaling from cropping the Sienna roof. Preserve mobile picture/layout.
