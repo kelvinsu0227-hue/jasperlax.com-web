@@ -1,3 +1,4 @@
+import {feeCopy} from './fee-copy.js';
 export const faqGroups = [
   {title:'LAX arrivals', id:'arrivals', items:[
     ['How do I meet my chauffeur at LAX?', 'Your chauffeur will contact you by text and WhatsApp before your flight lands. With Meet & Greet, your chauffeur welcomes you with a name sign in the arrivals hall. With Curbside Pickup, collect your bags, then send your chauffeur the number on the white passenger-pickup column outside your terminal, for example B8, 4A or 7F. Your chauffeur will meet you at the confirmed white pickup column; stopping is permitted only in the designated white passenger-pickup area. Follow the current signs and your chauffeur’s instructions. During busy periods, if you agree to move pickup to the departures level, this may save 20 minutes or more depending on traffic. Confirm the level and meeting point with your chauffeur before moving.'],
@@ -14,7 +15,7 @@ export const faqGroups = [
     ['Where will I be dropped off at LAX?', 'Your chauffeur will drop you off at the terminal designated for your airline.']
   ]},
   {title:'Booking & your vehicle', id:'booking-vehicle', items:[
-    ['Which areas do you serve?', 'JasperLAX offers Toyota Sienna transfers to and from LAX in Los Angeles, Orange County, San Bernardino, and Riverside.'],
+    ['Which areas do you serve?', 'JasperLAX offers Toyota Sienna transfers to and from LAX in Los Angeles, Orange County, San Bernardino, Riverside and Ventura counties. For other destinations, contact our team to confirm availability.'],
     ['What vehicle will I ride in?', 'JasperLAX offers Toyota Sienna airport transfers. For a Cadillac Escalade or group transportation, explore the options at Jasperlimo.com.'],
     ['Do you offer rides both to and from LAX?', 'Yes. JasperLAX serves trips to LAX and pickups from LAX within our service areas.'],
     ['How much does a ride cost?', 'Los Angeles rides start at $99, Orange County at $119, and San Bernardino and Riverside at $129. Contact us with your trip details for a final quote.'],
@@ -25,6 +26,7 @@ export const faqGroups = [
     ['How do I know my reservation is confirmed?', 'A quote request alone does not confirm a reservation. Make sure you have received a booking confirmation and reviewed your pickup details before traveling. Contact JasperLAX if you need help confirming your trip.']
   ]}
 ];
+faqGroups[2].items.push([feeCopy.en.qFees,feeCopy.en.label+" "+feeCopy.en.fees],[feeCopy.en.qCancel,feeCopy.en.cancel]);
 export const questions=faqGroups.flatMap(group=>group.items);
 export const guideQuestions=faqGroups.slice(0,2).flatMap(group=>group.items);
 

@@ -1,3 +1,4 @@
+import {feeCopy} from './fee-copy.js';
 import {airportCopy} from './airport-copy.js';
 import {Children,createContext,cloneElement,isValidElement} from 'react';
 export const languages=[['en','EN','English'],['zh','中文','简体中文'],['es','ES','Español'],['ja','日本語','日本語'],['ko','한국어','한국어']];
@@ -196,3 +197,21 @@ add('Select Meet & Greet if you would like your chauffeur to welcome you with a 
 add('Review the final quote and payment instructions shown in Moovs before completing your reservation. Contact JasperLAX if any charge or booking detail is unclear.','完成预订前，请核对 Moovs 显示的最终报价及付款说明。如对费用或预订信息有疑问，请联系 JasperLAX。','Antes de completar la reserva, revisa la cotización final y las instrucciones de pago en Moovs. Contacta con JasperLAX si tienes dudas sobre algún cargo o detalle.','予約完了前に、Moovs に表示される最終見積もりと支払い案内をご確認ください。料金や予約内容に不明な点がある場合は JasperLAX にお問い合わせください。','예약을 완료하기 전에 Moovs에 표시된 최종 견적과 결제 안내를 확인하세요. 요금이나 예약 내용이 불분명하면 JasperLAX에 문의하세요.');
 
 add('Book a private Toyota Sienna transfer to or from LAX. Enter your trip details and review your quote in Moovs.','预订 Toyota Sienna 私人 LAX 接送。在 Moovs 中填写行程信息并核对报价。','Reserva un traslado privado Toyota Sienna a o desde LAX. Introduce tu viaje y revisa la cotización en Moovs.','Toyota Sienna による LAX プライベート送迎を予約。Moovs で行程を入力し、見積もりを確認できます。','Toyota Sienna LAX 전용 이동을 예약하세요. Moovs에 일정을 입력하고 견적을 확인하세요.');
+
+add(feeCopy.en.qFees,...["zh","es","ja","ko"].map(lang=>feeCopy[lang].qFees));
+add(feeCopy.en.qCancel,...["zh","es","ja","ko"].map(lang=>feeCopy[lang].qCancel));
+add(feeCopy.en.label+" "+feeCopy.en.fees,...["zh","es","ja","ko"].map(lang=>feeCopy[lang].label+" "+feeCopy[lang].fees));
+add(feeCopy.en.cancel,...["zh","es","ja","ko"].map(lang=>feeCopy[lang].cancel));
+add("JasperLAX offers Toyota Sienna transfers to and from LAX in Los Angeles, Orange County, San Bernardino, Riverside and Ventura counties. For other destinations, contact our team to confirm availability.","JasperLAX 提供往返 LAX 的 Toyota Sienna 接送，覆盖洛杉矶县、橙县、圣贝纳迪诺县、河滨县及文图拉县。其他地区请联系客服确认。","JasperLAX ofrece traslados Toyota Sienna entre LAX y los condados de Los Angeles, Orange County, San Bernardino, Riverside y Ventura. Consulta otros destinos.","JasperLAX は LAX とロサンゼルス郡、オレンジ郡、サンバーナーディーノ郡、リバーサイド郡、ベンチュラ郡の Toyota Sienna 送迎を提供します。他の目的地はお問い合わせください。","JasperLAX는 LAX와 로스앤젤레스, 오렌지, 샌버너디노, 리버사이드 및 벤투라 카운티 간 Toyota Sienna 이동을 제공합니다. 다른 지역은 문의하세요.");
+
+add("Request a quote","询价","Solicitar cotización","見積もり依頼","견적 요청");
+add("Ventura County ↔ LAX","文图拉县 ↔ LAX","Ventura County ↔ LAX","ベンチュラ郡 ↔ LAX","벤투라 카운티 ↔ LAX");
+add("San Bernardino · Riverside · Ventura","圣贝纳迪诺 · 河滨 · 文图拉","San Bernardino · Riverside · Ventura","サンバーナーディーノ · リバーサイド · ベンチュラ","샌버너디노 · 리버사이드 · 벤투라");
+add("San Bernardino, Riverside and Ventura.","圣贝纳迪诺、河滨及文图拉地区。","San Bernardino, Riverside y Ventura.","サンバーナーディーノ、リバーサイド、ベンチュラ。","샌버너디노, 리버사이드 및 벤투라.");
+add("Airport rides to and from LAX across five Southern California counties.","往返 LAX 的机场接送，覆盖南加州五县。","Traslados a y desde LAX en cinco condados del sur de California.","南カリフォルニア5郡と LAX 間の空港送迎。","남부 캘리포니아 5개 카운티와 LAX 간 공항 이동.");
+add("We serve Los Angeles, Orange County, San Bernardino, Riverside and Ventura counties. For other destinations, contact our team. For a Cadillac Escalade or group transportation, explore Jasperlimo.com.","我们服务洛杉矶县、橙县、圣贝纳迪诺县、河滨县及文图拉县。其他地区请联系客服。如需 Cadillac Escalade 或团体接送，请查看 Jasperlimo.com。","Servimos los condados de Los Angeles, Orange County, San Bernardino, Riverside y Ventura. Consulta otros destinos. Para Cadillac Escalade o grupos, visita Jasperlimo.com.","ロサンゼルス郡、オレンジ郡、サンバーナーディーノ郡、リバーサイド郡、ベンチュラ郡に対応します。他の目的地はお問い合わせください。Cadillac Escalade や団体送迎は Jasperlimo.com をご覧ください。","로스앤젤레스, 오렌지, 샌버너디노, 리버사이드 및 벤투라 카운티를 서비스합니다. 다른 지역은 문의하세요. Cadillac Escalade나 그룹 이동은 Jasperlimo.com에서 확인하세요.");
+
+add("Private Toyota Sienna transfers to and from LAX for up to 6 passengers. Serving five Greater Los Angeles counties; parking and tolls included. Get a trip quote.","Toyota Sienna 私人 LAX 接送，最多 6 名乘客，覆盖大洛杉矶五县。已含停车费和过路费，欢迎咨询行程报价。","Traslados privados Toyota Sienna a y desde LAX para hasta 6 pasajeros. Cinco condados de Los Angeles; aparcamiento y peajes incluidos. Solicita cotización.","最大6名の Toyota Sienna プライベート LAX 送迎。ロサンゼルス地域5郡に対応、駐車料金・通行料込み。行程をお見積もりします。","최대 6명 Toyota Sienna LAX 전용 이동. 로스앤젤레스 지역 5개 카운티 서비스, 주차비와 통행료 포함. 일정 견적을 문의하세요.");
+
+add("Starting price per vehicle. Final quote confirmed before booking.","整车起价，预订前确认最终报价。","Tarifa inicial por vehículo. Cotización final antes de reservar.","車両1台あたりの最低料金。予約前に最終見積もりを確認します。","차량 전체 시작 요금. 예약 전에 최종 견적을 확인하세요.");
+add("City airport transfers","城市机场接送","Traslados por ciudad","都市別空港送迎","도시별 공항 이동");

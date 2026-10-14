@@ -20,7 +20,7 @@ for (const route of paths) {
   assert.ok(html.includes('property="og:url"')&&html.includes('property="og:image"'),`${route}: share metadata`);
   const faq=graph['@graph'].find(item=>item['@type']==='FAQPage');
   if(faq){
-    assert.equal(faq.mainEntity.length, /\/lax-pickup-guide\/$/.test(route)?10:19, `${route}: visible FAQ count`);
+    assert.equal(faq.mainEntity.length, /\/lax-pickup-guide\/$/.test(route)?10:21, `${route}: visible FAQ count`);
     for(const item of faq.mainEntity){
       const escape=text=>text.replaceAll('&','&amp;').replaceAll("'",'&#x27;').replaceAll('"','&quot;');
       assert.ok(html.includes(escape(item.name))&&html.includes(escape(item.acceptedAnswer.text)), `${route}: schema matches visible translated Q&A`);
@@ -28,11 +28,20 @@ for (const route of paths) {
     assert.ok(faq.mainEntity.some(item=>item.acceptedAnswer.text.includes('$15')),`${route}: JasperLAX waiting fee`);
     assert.ok(!faq.mainEntity.some(item=>item.acceptedAnswer.text.includes('$25')),`${route}: no inherited Jasperlimo fee`);
   }
+  assert.ok(!html.includes('This preview does not collect reservations') && !html.includes('before the booking service launches'), `${route}: no obsolete preview privacy notice`);
+  if (/\/routes\/(irvine|anaheim|pasadena)-lax\/$/.test(route)) {
+    assert.ok(html.includes('class="inner-page city-route-page"') && html.includes('https://customer.moovs.app/limomoli-inc/iframe'), `${route}: city landing page and authorized booking`);
+    assert.ok(html.includes('class="faq-category"'), `${route}: compact city FAQ`);
+    assert.ok(!html.includes('$undefined') && !html.includes('$null'), `${route}: no invented city price`);
+  }
+  if (/\/policies\/$/.test(route) || (faq && faq.mainEntity.length===21)) {
+    assert.ok((html.includes('$30')||html.includes('30ドル')) && (html.includes('$35')||html.includes('35ドル')) && html.includes('50%'), `${route}: confirmed fees and cancellation policy`);
+  }
   assert.ok(!html.includes('$79'), 'No old unconfirmed rate');
   assert.ok(!html.includes('$XX'), 'Latest approved starting rates replace placeholders');
   assert.ok(html.includes('hreflang="ko"')&&html.includes('hreflang="zh-Hans"'), 'Language alternates');
   assert.ok(!html.includes('sketchfab.com'), '360 viewer removed');
-  if (/\/routes\/[^/]+\/$/.test(route)) {
+  if (/\/routes\/[^/]+\/$/.test(route) && !/\/(irvine|anaheim|pasadena)-lax\/$/.test(route)) {
     assert.ok(html.includes('class="route-booking"'),`${route}: embedded booking position`);
     assert.ok(!html.includes('class="booking-pending"'),`${route}: configured booking replaces pending state`);
     assert.ok(html.includes('class="moovs-booking-frame"'),`${route}: booking iframe present`);

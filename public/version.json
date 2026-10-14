@@ -1,11 +1,13 @@
 {
-  "name": "JasperLAX.com Web 1.1",
-  "version": "1.1.1",
-  "release_date": "2026-10-12",
+  "name": "JasperLAX.com Web 1.2",
+  "version": "1.2.0",
+  "release_date": "2026-10-14",
   "changes": [
-    "Region-specific planning sections and collapsed route FAQs in five languages",
-    "Production-only indexing for all 75 public pages",
-    "Wildcard crawler access with sitemap declaration",
-    "Canonical www redirect and enhanced metadata"
+    "Five-county service coverage and Irvine, Anaheim and Pasadena landing pages in five languages",
+    "Confirmed vehicle pricing, optional services and cancellation/refund terms",
+    "Updated privacy information, service summaries and responsive booking instructions",
+    "Three attributed Google reviews of Jasper Limousine Service with service-scope disclosure",
+    "Consent-based JasperLAX GA4 G-GWFSCS26X4 with contact and booking click events",
+    "90 indexable pages, sitemap, and retained Search Console ownership verification file"
   ]
 }

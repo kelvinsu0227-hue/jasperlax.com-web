@@ -1,4 +1,4 @@
-# JasperLAX.com Web 1.1
+# JasperLAX.com Web 1.2
 
 Responsive Toyota Sienna airport transfer website for JasperLAX.com.
 
@@ -24,6 +24,7 @@ pnpm dev --host 127.0.0.1 --port 4173
 pnpm build
 node scripts/check-prerender.mjs
 pnpm test:sites
+node --test tests/analytics.test.mjs
 ```
 
 Build output: `dist/client` contains the prerendered pages; `dist/server/index.js` is the Sites Worker entrypoint. Sites identity is retained in `.openai/hosting.json`.
@@ -34,7 +35,7 @@ Generated vehicle scenes are illustrative; Toyota reference-image details are in
 
 Booking is provided by the configured external Moovs portal. Uploading this repository does not submit bookings or change Moovs account settings. All public website content is indexable as described below.
 
-No automatic publishing workflow is configured in this repository.
+Production hosting uses Vercel connected to the GitHub main branch. Push only after explicit user authorization to publish.
 
 ## SEO / AI crawler access
 
@@ -50,3 +51,7 @@ All public website builds are production. There is no separate non-indexable pre
 Publishing requires the user's explicit instruction. Pushing `main` to GitHub can trigger the connected Vercel production deployment; do not push during local review.
 
 After publication, verify live robots/meta/redirect responses, submit `https://jasperlax.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools, then inspect the homepage and four region URLs. Submission requires access to those accounts and is not completed by source changes. Crawling, indexing, AI citations and bot traffic are not guaranteed by an Allow rule; real traffic must be checked using hosting logs and webmaster reports.
+
+## Web 1.2 analytics
+
+GA4 measurement ID: G-GWFSCS26X4. Analytics loads only on jasperlax.com or www.jasperlax.com after visitor consent. Visitors can change consent using Analytics preferences. Contact and booking clicks do not confirm Moovs orders. Do not remove public/google7c057bfebb72f1ce.html, which maintains Search Console ownership verification.
