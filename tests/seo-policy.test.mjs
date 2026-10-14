@@ -24,3 +24,12 @@ test('Server and build configuration cannot silently reinstate preview restricti
  const prerender=readFileSync(new URL('../scripts/prerender.mjs',import.meta.url),'utf8');
  assert.doesNotMatch(prerender,/VERCEL_ENV|--preview|buildProfile/);
 });
+
+test('Vercel normalizes page URLs and only applies immutable caching to fingerprinted bundles',()=>{
+ const config=JSON.parse(readFileSync(new URL('../vercel.json',import.meta.url),'utf8'));
+ assert.equal(config.trailingSlash,true);
+ const patterns=config.headers.map(rule=>new RegExp('^'+rule.source.replace(':file(','(')+'$'));
+ for(const file of ['/assets/index-DjnLJMoy.js','/assets/index-i6I0yObk.css']) assert.ok(patterns.some(pattern=>pattern.test(file)),file);
+ for(const file of ['/assets/sienna-hero.webp','/assets/jasperlax-wordmark.svg','/assets/app.js','/about/']) assert.ok(patterns.every(pattern=>!pattern.test(file)),file);
+ assert.ok(config.headers.every(rule=>rule.headers.some(header=>header.key==='Cache-Control'&&header.value==='public, max-age=31536000, immutable')));
+});

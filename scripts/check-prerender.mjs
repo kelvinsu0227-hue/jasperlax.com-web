@@ -1,6 +1,6 @@
 import {readFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
-import {paths,parseLocale} from '../dist/ssr/entry-server.js';
+import {paths,parseLocale,localePath,languages} from '../dist/ssr/entry-server.js';
 import {robotsMeta,robotsFile} from './seo-policy.mjs';
 const {profile}=JSON.parse(readFileSync('dist/seo-build.json','utf8'));
 assert.equal(profile,'production','All builds are production');
@@ -8,15 +8,25 @@ const sitemap=readFileSync('dist/client/sitemap.xml','utf8');
 assert.equal(readFileSync('dist/client/robots.txt','utf8'),robotsFile(),'Crawler policy matches build');
 for (const route of paths) {
   const html = readFileSync(`dist/client${route}index.html`, 'utf8');
-  assert.match(html, /<h1>/, `${route}: readable heading`);
+  assert.match(html, /<h1(?:\s[^>]*)?>/, `${route}: readable heading`);
   assert.ok(html.includes(`content="${robotsMeta()}"`),`${route}: correct ${profile} indexing`);
   assert.equal(sitemap.includes(`<loc>https://jasperlax.com${route}</loc>`),true,`${route}: sitemap includes every public page`);
   assert.ok(html.includes(`href="https://jasperlax.com${route}"`), `${route}: canonical`);
   assert.ok(html.includes('wa.me/16267042786'), `${route}: confirmed WhatsApp`);
   const graph = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
   assert.ok(graph['@graph'].every(item => !('offers' in item)), 'Unconfirmed prices cannot enter schema');
+  assert.equal((html.match(/rel="canonical"/g)||[]).length,1,`${route}: exactly one canonical`);
+  assert.ok(html.includes(`rel="canonical" href="https://jasperlax.com${route}"`),`${route}: self canonical, never the other brand`);
+  assert.ok(html.includes(`href="${localePath('/book/',parseLocale(route).lang)}"`),`${route}: booking discoverable without JavaScript`);
+  for(const [code] of languages) assert.ok(html.includes(`href="${localePath(parseLocale(route).path,code)}" lang="${code}"`),`${route}: crawlable language alternative ${code}`);
+  const webpage=graph['@graph'].find(item=>item['@type']==='WebPage');
+  assert.equal(webpage.url,`https://jasperlax.com${route}`,`${route}: structured page identity`);
   const organization=graph['@graph'].find(item=>item['@type']==='Organization');
   assert.equal(organization.address.addressLocality,'San Marino',`${route}: confirmed business city`);
+  assert.equal(organization.name,'Jasper Limousine Service',`${route}: shared company trading name`);
+  assert.deepEqual(organization.brand.map(brand=>brand.url),['https://jasperlax.com/','https://jasperlimo.com/'],`${route}: distinct products under one company`);
+  assert.ok(!organization.legalName,`${route}: no invented registered company name`);
+  assert.equal((html.match(/<h1(?:\s[^>]*)?>/g)||[]).length,1,`${route}: single descriptive heading`);
   assert.ok(html.includes('property="og:url"')&&html.includes('property="og:image"'),`${route}: share metadata`);
   const faq=graph['@graph'].find(item=>item['@type']==='FAQPage');
   if(faq){

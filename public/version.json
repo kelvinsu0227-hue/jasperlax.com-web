@@ -1,6 +1,6 @@
 {
   "name": "JasperLAX.com Web 1.2",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "release_date": "2026-10-14",
   "changes": [
     "Five-county service coverage and Irvine, Anaheim and Pasadena landing pages in five languages",
@@ -8,6 +8,10 @@
     "Updated privacy information, service summaries and responsive booking instructions",
     "Three attributed Google reviews of Jasper Limousine Service with service-scope disclosure",
     "Consent-based JasperLAX GA4 G-GWFSCS26X4 with contact and booking click events",
-    "90 indexable pages, sitemap, and retained Search Console ownership verification file"
-  ]
+    "90 indexable pages, sitemap, and retained Search Console ownership verification file",
+    "Owner-confirmed shared company with distinct luxury Jasperlimo and comfortable economical JasperLAX products in five languages",
+    "Crawlable booking and language links, route descriptions, city-specific planning and expanded About/Contact information",
+    "Separate self-canonical pages, page and brand structured data, trailing-slash normalization and fingerprinted bundle caching"
+  ],
+  "revision": 2
 }

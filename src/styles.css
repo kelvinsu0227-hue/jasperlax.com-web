@@ -122,3 +122,22 @@ html:lang(zh) h1,html:lang(zh) h2,html:lang(ja) h1,html:lang(ja) h2,html:lang(ko
 @media(max-width:700px){.reviews-heading{display:block}.reviews-heading .text-link{margin-top:12px;font-size:14px}.reviews-heading h2{font-size:32px}.reviews-note{font-size:13px;margin:14px 0 22px}.reviews-track{grid-auto-columns:90%;gap:16px}.review-card{padding:22px}.review-card blockquote{font-size:14px}.review-card h3{font-size:16px}.review-source{font-size:11px}}
 
 .customer-reviews .review-controls{justify-content:flex-start}
+
+/* Search content retains the established brand composition. */
+.hero-slogan{font-family:'Libre Caslon Display',Georgia,serif;font-weight:400;font-size:clamp(56px,6.7vw,102px);line-height:1.02;letter-spacing:-.035em}
+.hero h1.hero-intro{font-family:inherit;font-size:22px;font-weight:400;line-height:1.35;letter-spacing:normal;max-width:400px}
+.footer-languages{grid-column:1/-1;display:flex;gap:12px 24px;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:18px;margin-top:12px;font-size:13px}
+.footer-languages a{min-height:44px;display:inline-flex;align-items:center}
+.footer-languages a[aria-current=page]{color:var(--blue);text-decoration:underline;text-underline-offset:4px}
+.about-contact h1{font-size:clamp(40px,5vw,72px);max-width:950px}
+.about-contact .information-section ul{padding-left:24px;line-height:1.8}
+.about-contact .information-section li+li{margin-top:10px}
+.city-planning-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:28px}
+.city-planning-grid article{border-top:1px solid var(--rule);padding-top:20px}
+.city-planning-grid h3{margin-bottom:12px}
+.luggage-examples .service-facts{margin-top:24px}
+.top-nav>a.primary:hover{color:#fff}
+@media(max-width:700px){.hero-slogan{font-size:clamp(48px,10vw,64px)}.hero h1.hero-intro{font-size:18px;max-width:360px}.city-planning-grid{grid-template-columns:1fr;gap:22px}.footer-languages{gap:6px 18px}.bottom-toolbar .toolbar-book{background:var(--blue);color:#fff;display:flex;flex-direction:row;gap:10px;border-radius:7px;min-height:46px;align-self:center;font-size:15px;font-weight:700;padding:0 20px}.about-contact h1{font-size:42px}}
+
+.bottom-toolbar .toolbar-book{background:var(--blue);color:#fff;flex-direction:row;gap:10px;border-radius:7px;min-height:46px;min-width:106px;font-size:15px;font-weight:700;padding:0 20px}
+.upgrade p.brand-positioning{margin-bottom:12px}

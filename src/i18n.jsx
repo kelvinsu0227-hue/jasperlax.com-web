@@ -215,3 +215,8 @@ add("Private Toyota Sienna transfers to and from LAX for up to 6 passengers. Ser
 
 add("Starting price per vehicle. Final quote confirmed before booking.","整车起价，预订前确认最终报价。","Tarifa inicial por vehículo. Cotización final antes de reservar.","車両1台あたりの最低料金。予約前に最終見積もりを確認します。","차량 전체 시작 요금. 예약 전에 최종 견적을 확인하세요.");
 add("City airport transfers","城市机场接送","Traslados por ciudad","都市別空港送迎","도시별 공항 이동");
+
+add('Learn about JasperLAX private Toyota Sienna airport transfers, service across five Southern California counties and how to book your LAX trip.','了解 JasperLAX 的 Toyota Sienna 私人机场接送、南加州五县服务范围及 LAX 行程预订流程。','Conoce los traslados privados Toyota Sienna de JasperLAX, sus cinco condados de servicio y cómo reservar tu viaje LAX.','JasperLAX の Toyota Sienna プライベート空港送迎、南カリフォルニア5郡の対応エリアと LAX 送迎の予約方法をご案内します。','JasperLAX Toyota Sienna 전용 공항 이동, 남부 캘리포니아 5개 카운티 서비스와 LAX 예약 방법을 확인하세요.');
+add('Contact JasperLAX by text, WhatsApp or LINE for a private LAX transfer quote, luggage questions or help with an existing reservation.','通过短信、WhatsApp 或 LINE 联系 JasperLAX，咨询 LAX 私人接送报价、行李空间或已有预订。','Contacta a JasperLAX por SMS, WhatsApp o LINE para cotizar tu traslado privado LAX, consultar equipaje o recibir ayuda con tu reserva.','SMS・WhatsApp・LINE で JasperLAX にお問い合わせください。LAX プライベート送迎の見積もり、荷物スペース、既存予約のご相談に対応します。','문자, WhatsApp 또는 LINE으로 JasperLAX에 LAX 전용 이동 견적, 수하물 공간 또는 기존 예약을 문의하세요.');
+
+add('Text','短信','SMS','SMS','문자');
