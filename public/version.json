@@ -1,7 +1,7 @@
 {
-  "name": "JasperLAX.com Web 1.2",
-  "version": "1.2.2",
-  "release_date": "2026-10-14",
+  "name": "JasperLAX.com Web 1.3",
+  "version": "1.3.0",
+  "release_date": "2026-10-15",
   "changes": [
     "Five-county service coverage and Irvine, Anaheim and Pasadena landing pages in five languages",
     "Confirmed vehicle pricing, optional services and cancellation/refund terms",
@@ -13,9 +13,12 @@
     "Crawlable booking and language links, route descriptions, city-specific planning and expanded About/Contact information",
     "Separate self-canonical pages, page and brand structured data, trailing-slash normalization and fingerprinted bundle caching",
     "Homepage full Moovs portal embed exposes Airport, Airline and Flight fields with five-language instructions",
-    "Fluid desktop booking container, preserved mobile layout, homepage-only Moovs brand-header crop"
+    "Fluid desktop booking container, preserved mobile layout, homepage-only Moovs brand-header crop",
+    "Added factual llms.txt covering JasperLAX services, pricing, travel planning and canonical source links",
+    "Reduced cross-brand repetition and clarified airport meeting, group capacity and website language guidance",
+    "Added content-guide discovery links and automated checks across all 90 prerendered pages"
   ],
-  "revision": 3,
+  "revision": 1,
   "integration_notes": [
     "Full portal iframe is a compatibility integration outside Moovs documented supported embed options.",
     "Flight fields and responsive presentation verified; login, payment and completed reservations not verified.",
