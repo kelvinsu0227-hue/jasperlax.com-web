@@ -13,6 +13,7 @@ for (const route of paths) {
   assert.equal(sitemap.includes(`<loc>https://jasperlax.com${route}</loc>`),true,`${route}: sitemap includes every public page`);
   assert.ok(html.includes(`href="https://jasperlax.com${route}"`), `${route}: canonical`);
   assert.ok(html.includes('wa.me/16267042786'), `${route}: confirmed WhatsApp`);
+  if(parseLocale(route).path==='/') assert.ok(html.includes('src="https://customer.moovs.app/limomoli-inc/new/info"'),`${route}: homepage full-portal compatibility candidate stays on JasperLAX account`);
   const graph = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
   assert.ok(graph['@graph'].every(item => !('offers' in item)), 'Unconfirmed prices cannot enter schema');
   assert.equal((html.match(/rel="canonical"/g)||[]).length,1,`${route}: exactly one canonical`);

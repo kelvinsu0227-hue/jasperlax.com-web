@@ -141,3 +141,19 @@ html:lang(zh) h1,html:lang(zh) h2,html:lang(ja) h1,html:lang(ja) h2,html:lang(ko
 
 .bottom-toolbar .toolbar-book{background:var(--blue);color:#fff;flex-direction:row;gap:10px;border-radius:7px;min-height:46px;min-width:106px;font-size:15px;font-weight:700;padding:0 20px}
 .upgrade p.brand-positioning{margin-bottom:12px}
+
+.home-booking-full .moovs-booking-frame{height:1500px}
+@media(max-width:700px){.home-booking-full .moovs-booking-frame{height:1720px}}
+
+@media(max-width:700px){.home-booking-full{width:calc(100% + 2 * var(--gutter));margin-inline:calc(-1 * var(--gutter));border-left:0;border-right:0;border-radius:0}}
+
+/* Scope the measured Moovs brand-header crop to the homepage only.
+   Full portal: 160px banner at >=600px; 68px mobile brand header below 600px. */
+.home-booking-full{max-width:900px;margin-inline:auto;container-type:inline-size}
+.home-moovs-viewport{overflow:hidden;isolation:isolate;background:#fff}
+.home-moovs-viewport .moovs-booking-frame{width:min(100%,590px);margin:-68px auto 0}
+@media(max-width:700px){.home-booking-full{max-width:none;margin-inline:calc(-1 * var(--gutter))}}
+@container(min-width:840px){.home-moovs-viewport .moovs-booking-frame{width:100%;margin-top:-160px}}
+
+/* Desktop-only widening; retain the approved compact/mobile presentation. */
+@media(min-width:901px){.home-booking-full{width:100%;max-width:none}}
