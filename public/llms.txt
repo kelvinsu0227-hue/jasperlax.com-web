@@ -4,7 +4,7 @@
 
 Website: https://jasperlax.com/
 Business location: San Marino, California, United States.
-Content reviewed: October 15, 2026. Amounts below are in US dollars (USD).
+Content reviewed: October 21, 2026. Amounts below are in US dollars (USD).
 
 **Who we are.** JasperLAX.com focuses on comfortable, economical private Toyota Sienna airport transfers to and from Los Angeles International Airport (LAX) in Southern California. The service is intended for families, small groups and individual travelers who want a vehicle reserved for their own booking party.
 
@@ -81,9 +81,13 @@ Content reviewed: October 15, 2026. Amounts below are in US dollars (USD).
 - [XML sitemap](https://jasperlax.com/sitemap.xml): Public page inventory, including localized pages.
 - [Crawler access policy](https://jasperlax.com/robots.txt): The site's crawler-access rules; this guide does not replace robots.txt.
 
-JasperLAX.com is the company's comfortable, economical Toyota Sienna airport-transfer product; Jasperlimo.com is its luxury transportation product, with vehicle choices, prices and service terms specified separately on each website.
-
 ## Los Angeles sightseeing charter
-- https://jasperlax.com/tour-charter/ and https://jasperlax.com/zh/tour-charter/
-- Private vehicle with chauffeur: USD 530 for 10 hours. Pickup across Los Angeles; confirm route, group and booking details.
+- [Los Angeles day charter](https://jasperlax.com/tour-charter/): Private vehicle and chauffeur, USD 480 for 10 hours.
+- [洛杉矶包车旅游](https://jasperlax.com/zh/tour-charter/): 私人包车，480美元／10小时。
+- [Los Ángeles con chófer](https://jasperlax.com/es/tour-charter/): Paquete privado de 10 horas.
+- [ロサンゼルス観光チャーター](https://jasperlax.com/ja/tour-charter/): 10時間の専用車プラン。
+- [로스앤젤레스 관광 전용차](https://jasperlax.com/ko/tour-charter/): 10시간 전용차 패키지.
+- Private vehicle with chauffeur: USD 480 for 10 hours. Pickup across Los Angeles; confirm route, group and booking details.
 - Includes drinking water, toll-road charges and regular parking. Gratuities and event parking excluded; overtime USD 60 per hour.
+
+JasperLAX.com is the company's comfortable, economical Toyota Sienna airport-transfer product; Jasperlimo.com is its luxury transportation product, with vehicle choices, prices and service terms specified separately on each website.

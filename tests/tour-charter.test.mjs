@@ -8,7 +8,7 @@ test('tour pages are discoverable in every existing website language', () => {
     assert.ok(paths.includes(path), `${path} must be prerendered`);
     assert.doesNotMatch(metadata(path).title, /Page not found|机场接送|Airport Ride/);
     const html = render(path);
-    assert.match(html, /\$530/);
+    assert.match(html, /\$480/);
     assert.match(html, /\$60/);
     assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
     assert.ok(html.includes(`${prefix}/book/`));

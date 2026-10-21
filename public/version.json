@@ -1,7 +1,7 @@
 {
   "name": "JasperLAX.com Web 1.3",
-  "version": "1.3.0",
-  "release_date": "2026-10-15",
+  "version": "1.3.1",
+  "release_date": "2026-10-21",
   "changes": [
     "Five-county service coverage and Irvine, Anaheim and Pasadena landing pages in five languages",
     "Confirmed vehicle pricing, optional services and cancellation/refund terms",
@@ -16,9 +16,12 @@
     "Fluid desktop booking container, preserved mobile layout, homepage-only Moovs brand-header crop",
     "Added factual llms.txt covering JasperLAX services, pricing, travel planning and canonical source links",
     "Reduced cross-brand repetition and clarified airport meeting, group capacity and website language guidance",
-    "Added content-guide discovery links and automated checks across all 90 prerendered pages"
+    "Added content-guide discovery links and automated checks across all 90 prerendered pages",
+    "Five-language Los Angeles private day charter pages: USD480 for10 hours; overtime USD60/hour",
+    "Visible homepage charter link with localized destination, pricing and inquiry messages",
+    "95 public pages and updated content guide preserving distinct brand positioning"
   ],
-  "revision": 1,
+  "revision": 2,
   "integration_notes": [
     "Full portal iframe is a compatibility integration outside Moovs documented supported embed options.",
     "Flight fields and responsive presentation verified; login, payment and completed reservations not verified.",
