@@ -82,3 +82,8 @@ Content reviewed: October 15, 2026. Amounts below are in US dollars (USD).
 - [Crawler access policy](https://jasperlax.com/robots.txt): The site's crawler-access rules; this guide does not replace robots.txt.
 
 JasperLAX.com is the company's comfortable, economical Toyota Sienna airport-transfer product; Jasperlimo.com is its luxury transportation product, with vehicle choices, prices and service terms specified separately on each website.
+
+## Los Angeles sightseeing charter
+- https://jasperlax.com/tour-charter/ and https://jasperlax.com/zh/tour-charter/
+- Private vehicle with chauffeur: USD 530 for 10 hours. Pickup across Los Angeles; confirm route, group and booking details.
+- Includes drinking water, toll-road charges and regular parking. Gratuities and event parking excluded; overtime USD 60 per hour.

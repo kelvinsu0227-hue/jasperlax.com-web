@@ -19,6 +19,7 @@ for(const url of paths){
  organization.contactPoint={'@type':'ContactPoint',telephone:'+1-626-704-2786',contactType:'Reservations and customer support',url:siteOrigin+localePath('/contact/',locale.lang)};
  const service=schema['@graph'].find(item=>item['@type']==='Service');
  service.brand={'@id':siteOrigin+'/#brand'};
+ if(locale.path==='/tour-charter/') Object.assign(service,{name:meta.title.split(' | ')[0],description:meta.description,serviceType:'Private chauffeured sightseeing charter',areaServed:['Los Angeles']});
  service['@id']=siteOrigin+url+'#service';
  schema['@graph'].push({'@type':'WebPage','@id':siteOrigin+url+'#webpage',url:siteOrigin+url,name:meta.title,description:meta.description,inLanguage:locale.lang,isPartOf:{'@id':siteOrigin+'/#website'},about:{'@id':service['@id']},publisher:{'@id':siteOrigin+'/#organization'}});
  if(locale.path==='/'||locale.path==='/faq/'||locale.path==='/lax-pickup-guide/'||locale.path.startsWith('/routes/')) schema['@graph'].push({'@type':'FAQPage',mainEntity:(locale.path==='/lax-pickup-guide/'?guideQuestions:questions).map(([q,a])=>({'@type':'Question',name:translate(q,locale.lang),acceptedAnswer:{'@type':'Answer',text:translate(a,locale.lang)}}))});

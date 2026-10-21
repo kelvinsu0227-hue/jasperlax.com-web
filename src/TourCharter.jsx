@@ -1,0 +1,7 @@
+import React, {useContext} from 'react';
+import {LanguageContext,localePath} from './i18n.jsx';
+import {tourCopy,tourWhatsapp} from './tour-copy.js';
+export default function TourCharter(){
+ const lang=useContext(LanguageContext),c=tourCopy[lang];
+ return <main className="inner-page tour-page"><section className="tour-intro"><div><span className="eyebrow">JASPERLAX · LOS ANGELES</span><h1>{c.title}</h1><p className="lead">{c.intro}</p><div className="tour-price">$530 <span>/ {c.duration}</span></div><a className="primary" href={tourWhatsapp(lang)} target="_blank" rel="noopener noreferrer">{c.cta}</a></div><img src="/assets/sienna-hero.webp" alt={lang==='zh'?'加州场景中的 Toyota Sienna，示意图片':'Toyota Sienna in California, illustrative concept image'} width="1400" height="1000" fetchPriority="high"/></section><section className="tour-terms"><div><h2>{c.included}</h2><ul>{c.items.map(item=><li key={item}>{item}</li>)}</ul></div><div><h2>{c.extra}</h2><p>{c.exclusions}</p><p className="tour-overtime">{c.overtime}</p><p>{c.terms}</p></div></section><section className="inner-section"><h2>{c.plan}</h2><p>{c.body}</p><p className="muted">{c.note}</p><div className="tour-actions"><a className="primary" href={tourWhatsapp(lang)} target="_blank" rel="noopener noreferrer">{c.cta}</a><a className="text-link" href={localePath('/book/',lang)}>{c.booking} →</a></div><p>{c.bookingNote}</p><p>{c.contact}: <a href="sms:+16267042786">+1 (626) 704-2786</a> · <a href="https://line.me/ti/p/KE2kEevLtY" target="_blank" rel="noopener noreferrer">LINE</a></p></section></main>;
+}
