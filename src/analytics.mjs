@@ -1,6 +1,6 @@
 export const MEASUREMENT_ID='G-GWFSCS26X4';
 export const CONSENT_KEY='jasperlax:analytics-consent:v1';
-const allowedEvents=new Set(['whatsapp_click','line_click','phone_click','email_click','booking_start','booking_click','inquiry_submitted','airport_booking_guide']);
+const allowedEvents=new Set(['whatsapp_click','line_click','phone_click','sms_click','email_click','booking_start','booking_click','airport_booking_guide']);
 export function safePageUrl(value,origin){try{const u=new URL(value,origin);return u.origin+u.pathname}catch{return ''}}
 export function createAnalytics(win,doc){
  const productionHost=["www.jasperlax.com","jasperlax.com"].includes(win.location.hostname);
@@ -21,7 +21,7 @@ export function createAnalytics(win,doc){
   else {win['ga-disable-'+MEASUREMENT_ID]=true;if(started)command('consent','update',{analytics_storage:'denied'});for(const c of doc.cookie.split(';')){const name=c.split('=')[0].trim();if(name==='_ga'||name.startsWith('_ga_'))for(const domain of ['',win.location.hostname,'.jasperlax.com'])doc.cookie=name+'=; Max-Age=0; path=/'+(domain?'; domain='+domain:'');}}
   win.dispatchEvent(new win.CustomEvent('jasperlax:consent-changed',{detail:value}));
  }
- win.addEventListener('jasperlax:interaction',e=>{if(!productionHost||!enabled||!allowedEvents.has(e.detail?.event))return;command('event',e.detail.event,{...page(),page_path:win.location.pathname,transport_type:'beacon'})});
+ win.addEventListener('jasperlax:interaction',e=>{if(!productionHost||!enabled||!allowedEvents.has(e.detail?.event))return;command('event',e.detail.event,{...page(),page_path:win.location.pathname,transport_type:'beacon',...(['whatsapp_click','sms_click','phone_click','booking_click'].includes(e.detail.event)?{interaction_kind:'entry_click'}:{}),...(['home_hero','book_quote','city_quote'].includes(e.detail.entry_location)?{entry_location:e.detail.entry_location}:{})})});
  const saved=readConsent();if(saved==='granted'&&productionHost){enabled=true;start()}
  return {readConsent,setConsent};
 }

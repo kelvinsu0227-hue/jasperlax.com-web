@@ -17,9 +17,9 @@ export function ServiceOverview({inner=false}){
  const lang=useContext(LanguageContext);const c=serviceCopy[lang]||serviceCopy.en;
  return <section className={inner?'inner-section service-overview':'section service-overview'} aria-labelledby="service-overview-title"><h2 id="service-overview-title">{c.overview}</h2><dl className="service-facts">{[[c.vehicle,c.capacity],[c.areas,c.areaText],[c.pickup,c.pickupText],[c.fare,c.fareText]].map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl><a className="text-link" href={localePath('/policies/',lang)}>{c.details} →</a></section>;
 }
-export function LuggageCheck(){
+export function LuggageCheck({quoteUrl=contactUrl}){
  const lang=useContext(LanguageContext);const c=serviceCopy[lang]||serviceCopy.en;
- return <aside className="luggage-check"><h3>{c.luggageTitle}</h3><p>{c.luggageText}</p><a className="text-link" href={contactUrl} target="_blank" rel="noopener noreferrer">{c.quoteLink} ↗</a></aside>;
+ return <aside className="luggage-check"><h3>{c.luggageTitle}</h3><p>{c.luggageText}</p><a className="text-link" href={quoteUrl} target="_blank" rel="noopener noreferrer">{c.quoteLink} ↗</a></aside>;
 }
 export default function ServiceInformation({privacy=false}){
  const lang=useContext(LanguageContext);const c=serviceCopy[lang]||serviceCopy.en;

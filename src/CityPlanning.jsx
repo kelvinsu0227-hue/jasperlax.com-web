@@ -1,3 +1,4 @@
+import {quoteLanguages,transferQuoteUrl} from './transfer-quote.mjs';
 import React,{useContext} from 'react';
 import {LanguageContext,localePath} from './i18n.jsx';
 
@@ -27,5 +28,5 @@ const localNotes={
 const labels={en:['Plan your {city} airport transfer','Your destination & meeting point','Your return to LAX','LAX pickup guide','Request a trip quote'],zh:['规划{city}机场接送','目的地与会合地点','返程前往 LAX','LAX 接机指南','咨询行程报价'],es:['Planifica tu traslado de {city}','Destino y punto de encuentro','Tu regreso a LAX','Guía de recogida LAX','Solicitar cotización'],ja:['{city}の空港送迎を計画','目的地と合流場所','LAX へのお帰り','LAX お迎えガイド','見積もりを相談'],ko:['{city} 공항 이동 계획','목적지와 만날 장소','LAX로 돌아가는 일정','LAX 픽업 안내','견적 문의']};
 export default function CityPlanning({city}){
  const lang=useContext(LanguageContext);const c=labels[lang];const notes=localNotes[city[0]][['en','zh','es','ja','ko'].indexOf(lang)];
- return <section className="inner-section city-planning"><h2>{c[0].replace('{city}',city[1])}</h2><div className="city-planning-grid">{notes.map((text,i)=><article key={text}><h3>{c[i+1]}</h3><p>{text}</p></article>)}</div><div className="information-links"><a className="text-link" href={localePath('/lax-pickup-guide/',lang)}>{c[3]} →</a><a className="text-link" href="https://wa.me/16267042786" target="_blank" rel="noopener noreferrer">{c[4]} ↗</a></div></section>;
+ return <section className="inner-section city-planning"><h2>{c[0].replace('{city}',city[1])}</h2><div className="city-planning-grid">{notes.map((text,i)=><article key={text}><h3>{c[i+1]}</h3><p>{text}</p></article>)}</div><div className="information-links"><a className="text-link" href={localePath('/lax-pickup-guide/',lang)}>{c[3]} →</a><a className="text-link" href={quoteLanguages.has(lang)?transferQuoteUrl(lang,city[1]):"https://wa.me/16267042786"} target="_blank" rel="noopener noreferrer">{c[4]} ↗</a></div></section>;
 }

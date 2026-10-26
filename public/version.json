@@ -1,7 +1,7 @@
 {
-  "name": "JasperLAX.com Web 1.3",
-  "version": "1.3.1",
-  "release_date": "2026-10-21",
+  "name": "JasperLAX.com Web 1.4",
+  "version": "1.4.0",
+  "release_date": "2026-10-26",
   "changes": [
     "Five-county service coverage and Irvine, Anaheim and Pasadena landing pages in five languages",
     "Confirmed vehicle pricing, optional services and cancellation/refund terms",
@@ -19,9 +19,15 @@
     "Added content-guide discovery links and automated checks across all 90 prerendered pages",
     "Five-language Los Angeles private day charter pages: USD480 for10 hours; overtime USD60/hour",
     "Visible homepage charter link with localized destination, pricing and inquiry messages",
-    "95 public pages and updated content guide preserving distinct brand positioning"
+    "95 public pages and updated content guide preserving distinct brand positioning",
+    "Quote-first English and Chinese homepages with WhatsApp drafts, SMS, phone and direct booking entry points",
+    "Consultation before booking on English and Chinese booking pages; existing Moovs forms and policies retained",
+    "City-specific English and Chinese quote headings and messages for Irvine, Anaheim and Pasadena without unconfirmed city fares",
+    "Separate consent-based WhatsApp, SMS, phone and booking entry-click statistics; clicks are not verified inquiries or orders",
+    "Reduced homepage Moovs iframe whitespace with scrolling preserved for longer forms",
+    "Inline email inquiry form cancelled by owner; WhatsApp restored and no SMTP service or credentials included"
   ],
-  "revision": 2,
+  "revision": 1,
   "integration_notes": [
     "Full portal iframe is a compatibility integration outside Moovs documented supported embed options.",
     "Flight fields and responsive presentation verified; login, payment and completed reservations not verified.",

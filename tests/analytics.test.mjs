@@ -7,3 +7,15 @@ test('expired, malformed or inaccessible storage cannot silently enable analytic
 test('page URL sanitization removes queries and fragments',()=>{assert.equal(safePageUrl('https://www.jasperlax.com/?phone=123#secret'),'https://www.jasperlax.com/');assert.equal(safePageUrl(''),'')});
 
 test('local preview never sends to the production property',()=>{const x=environment();x.win.location.hostname='127.0.0.1';x.win.location.href='http://127.0.0.1:4176/';const a=createAnalytics(x.win,x.doc);a.setConsent('granted');x.fire({event:'booking_start'});assert.equal(x.scripts.length,0);assert.equal(x.win.dataLayer,undefined)});
+
+test('contact entry clicks stay separate and cannot report submitted inquiries or customer details',()=>{
+ const x=environment(),a=createAnalytics(x.win,x.doc);a.setConsent('granted');
+ for(const event of ['whatsapp_click','sms_click','phone_click','booking_click'])x.fire({event,entry_location:'home_hero',message:'private route',phone:'private number'});
+ x.fire({event:'inquiry_submitted'});x.fire({event:'purchase'});
+ x.fire({event:'sms_click',entry_location:'private@example.com'});
+ const events=x.win.dataLayer.map(c=>Array.from(c)).filter(c=>c[0]==='event');
+ assert.deepEqual(events.map(c=>c[1]),['page_view','whatsapp_click','sms_click','phone_click','booking_click','sms_click']);
+ for(const e of events.slice(1,5)){assert.equal(e[2].interaction_kind,'entry_click');assert.equal(e[2].entry_location,'home_hero');}
+ assert.equal(events.at(-1)[2].entry_location,undefined);
+ assert.doesNotMatch(JSON.stringify(events),/private route|private number|private@example.com|inquiry_submitted|purchase/);
+});
