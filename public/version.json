@@ -1,7 +1,7 @@
 {
-  "name": "JasperLAX.com Web 1.4",
-  "version": "1.4.0",
-  "release_date": "2026-10-26",
+  "name": "JasperLAX.com Web 1.4.1",
+  "version": "1.4.1",
+  "release_date": "2026-11-23",
   "changes": [
     "Five-county service coverage and Irvine, Anaheim and Pasadena landing pages in five languages",
     "Confirmed vehicle pricing, optional services and cancellation/refund terms",
@@ -25,9 +25,10 @@
     "City-specific English and Chinese quote headings and messages for Irvine, Anaheim and Pasadena without unconfirmed city fares",
     "Separate consent-based WhatsApp, SMS, phone and booking entry-click statistics; clicks are not verified inquiries or orders",
     "Reduced homepage Moovs iframe whitespace with scrolling preserved for longer forms",
-    "Inline email inquiry form cancelled by owner; WhatsApp restored and no SMTP service or credentials included"
+    "Inline email inquiry form cancelled by owner; WhatsApp restored and no SMTP service or credentials included",
+    "All seven public Google reviews verified on 2026-11-23, preserving original English/Japanese text and rating-only entries across five languages"
   ],
-  "revision": 1,
+  "revision": 2,
   "integration_notes": [
     "Full portal iframe is a compatibility integration outside Moovs documented supported embed options.",
     "Flight fields and responsive presentation verified; login, payment and completed reservations not verified.",
