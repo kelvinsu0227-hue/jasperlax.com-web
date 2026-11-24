@@ -46,7 +46,7 @@ html:lang(zh) h1,html:lang(zh) h2,html:lang(ja) h1,html:lang(ja) h2,html:lang(ko
 
 .wordmark-lax{display:inline-block;color:var(--blue);transform:skewX(-8deg);margin-right:1px}
 
-.booking-wordmark{width:250px;height:auto}.booking-page{padding-top:28px}.booking-page-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:24px}.booking-page-heading h1{font-size:44px}.booking-page>.moovs-booking-frame{border:1px solid var(--rule);border-radius:6px}@media(max-width:700px){.booking-wordmark{width:172px}.booking-page-heading{align-items:flex-start;flex-direction:column;gap:8px}.booking-page-heading h1{font-size:36px}.booking-page{padding:24px 16px}.booking-page .moovs-booking-frame{height:1150px}}
+.booking-wordmark{width:250px;height:auto}.booking-page{padding-top:28px}.booking-page-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:24px}.booking-page-heading h1{font-size:44px}.booking-page .mobile-booking-panel>.moovs-booking-frame{border:1px solid var(--rule);border-radius:6px}@media(max-width:700px){.booking-wordmark{width:172px}.booking-page-heading{align-items:flex-start;flex-direction:column;gap:8px}.booking-page-heading h1{font-size:36px}.booking-page{padding:24px 16px}.booking-page .moovs-booking-frame{height:1150px}}
 
 .my-booking-card{max-width:780px;background:#f4f7fc;padding:28px;margin-top:32px}.my-booking-card h2{font-size:32px}.my-booking-card ol{padding-left:22px;line-height:1.7}.my-booking-card li{padding:8px 0}.my-booking-card .primary{margin:16px 0}.my-booking-card .muted{font-size:14px;line-height:1.6}
 
@@ -206,4 +206,19 @@ html:lang(zh) h1,html:lang(zh) h2,html:lang(ja) h1,html:lang(ja) h2,html:lang(ko
  .before-booking-quote>p{font-size:14px}
  .before-booking-quote .quote-actions,.city-quote-entry .quote-actions{flex-direction:column}
  .quote-contact-options{gap:2px 10px;font-size:13px}
+}
+
+/* A phone-sized iframe viewport keeps Moovs confirmation actions on screen. */
+.mobile-booking-launch,.mobile-booking-bar{display:none}
+.booking-page .mobile-booking{scroll-margin-top:24px}
+@media(max-width:700px){
+ .mobile-booking-launch{display:block;width:100%;padding:18px 20px;border:0;border-radius:6px;background:var(--blue);color:white;font:inherit;font-weight:600;cursor:pointer}
+ .mobile-booking-panel{display:none}
+ .home-booking-full:has(.mobile-booking-panel.is-open){container-type:normal}
+ .mobile-booking-panel.is-open{display:flex;flex-direction:column;position:fixed;z-index:10000;inset:var(--booking-top,0px) 0 auto;height:var(--booking-height,100dvh);background:#fff;padding-bottom:env(safe-area-inset-bottom);box-sizing:border-box;overflow:hidden}
+ .mobile-booking-bar{display:flex;flex:none;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;border-bottom:1px solid var(--rule);background:white}
+ .mobile-booking-close{min-height:44px;border:0;background:white;color:var(--blue);font:inherit;font-weight:600;cursor:pointer;padding:8px}
+ .mobile-booking-panel.is-open .moovs-booking-frame{flex:1;min-height:0;width:100%;height:100%;margin:0;border:0;border-radius:0}
+ .mobile-booking-panel.is-open .home-moovs-viewport{display:flex;flex:1;min-height:0;width:100%;overflow:hidden}
+ body.mobile-booking-active #jasperlax-analytics-preferences,body.mobile-booking-active .bottom-toolbar,body.mobile-booking-active .line-float,body.mobile-booking-active .whatsapp-float{display:none}
 }

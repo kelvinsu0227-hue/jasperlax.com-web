@@ -31,7 +31,8 @@ test('booking consultation precedes fees and links directly to the unchanged for
   assert.ok(html.indexOf('before-booking-quote')<html.indexOf('fee-summary'));
   assert.ok(html.includes(quoteCopy[lang].beforeTitle));
   assert.match(html,/href="#transfer-booking-form"/);
-  assert.match(html,/id="transfer-booking-form" class="moovs-booking-frame" src="https:\/\/customer.moovs.app\/limomoli-inc\/iframe"/);
+  assert.match(html,/id="transfer-booking-form" class="mobile-booking"/);
+  assert.match(html,/class="moovs-booking-frame" src="https:\/\/customer.moovs.app\/limomoli-inc\/iframe"/);
   assert.ok(html.includes(`${prefix}/policies/`));
  }
 });
