@@ -18,11 +18,11 @@ test('both homepages put quote and direct booking links inside the hero',()=>{
   const html=render(prefix+'/');const hero=html.split('class="hero hero-quote"')[1].split('</section>')[0];
   assert.ok(hero.includes(quoteCopy[lang].price));assert.ok(hero.includes(quoteCopy[lang].rates));
   assert.ok(hero.includes(quoteCopy[lang].helper));
-  assert.ok(hero.includes('href="https://customer.moovs.app/limomoli-inc/new/info" data-entry-location="home_hero"'));
+  assert.ok(hero.includes('href="https://customer.moovs.app/jasper-limousine-service/new/info" data-entry-location="home_hero"'));
   assert.match(hero,/href="sms:\+16267042786"/);assert.match(hero,/href="tel:\+16267042786"/);
   assert.ok(hero.includes(transferQuoteUrl(lang).replaceAll('&','&amp;')));
   assert.doesNotMatch(hero,/<form|route-inquiry|quote-expand|href="mailto:/);
-  assert.ok(html.includes('src="https://customer.moovs.app/limomoli-inc/new/info"'));
+  assert.ok(html.includes('src="https://customer.moovs.app/jasper-limousine-service/new/info"'));
  }
 });
 test('booking consultation precedes fees and links directly to the unchanged form',()=>{
@@ -32,7 +32,7 @@ test('booking consultation precedes fees and links directly to the unchanged for
   assert.ok(html.includes(quoteCopy[lang].beforeTitle));
   assert.match(html,/href="#transfer-booking-form"/);
   assert.match(html,/id="transfer-booking-form" class="mobile-booking"/);
-  assert.match(html,/class="moovs-booking-frame" src="https:\/\/customer.moovs.app\/limomoli-inc\/iframe"/);
+  assert.match(html,/class="moovs-booking-frame" src="https:\/\/customer.moovs.app\/jasper-limousine-service\/iframe"/);
   assert.ok(html.includes(`${prefix}/policies/`));
  }
 });
@@ -45,7 +45,7 @@ test('city quote headings and drafts preserve city, direction and blank actual a
   const draft=transferQuoteMessage(lang,city);
   assert.match(draft,/Direction \(to LAX \/ from LAX\):|接送方向（前往LAX／从LAX出发）：/);
   assert.match(draft,/Pick-up:\nDrop-off:|上车地点：\n下车地点：/);
-  assert.ok(html.includes('src="https://customer.moovs.app/limomoli-inc/iframe"'));
+  assert.ok(html.includes('src="https://customer.moovs.app/jasper-limousine-service/iframe"'));
   const whatsappLinks=[...html.matchAll(/href="(https:\/\/wa\.me\/[^" ]+)"/g)].map(m=>m[1].replaceAll('&amp;','&'));
   assert.ok(whatsappLinks.length>=4);
   for(const href of whatsappLinks){
@@ -71,12 +71,12 @@ test('mobile toolbar opens the original Moovs portal directly in every locale',(
  for(const prefix of ['', '/zh', '/es', '/ja', '/ko']){
   for(const path of ['/', '/book/']){
    const html=render(prefix+path);
-   assert.match(html,/class="toolbar-book" href="https:\/\/customer.moovs.app\/limomoli-inc\/new\/info"/);
+   assert.match(html,/class="toolbar-book" href="https:\/\/customer.moovs.app\/jasper-limousine-service\/new\/info"/);
   }
  }
 });
 test('direct Moovs booking clicks remain entry clicks',()=>{
- assert.equal(contactEntry('https://customer.moovs.app/limomoli-inc/new/info','home_hero').event,'booking_click');
+ assert.equal(contactEntry('https://customer.moovs.app/jasper-limousine-service/new/info','home_hero').event,'booking_click');
  assert.equal(contactEntry('https://customer.moovs.app/another-account/new/info'),null);
 });
 test('direct booking entries have an immediate portal with a website return control',()=>{
@@ -85,5 +85,15 @@ test('direct booking entries have an immediate portal with a website return cont
   assert.match(html,/<dialog[^>]*class="booking-portal"/);
   assert.match(html,/class="booking-portal-back"/);
   assert.match(html,/class="toolbar-book"[^>]*data-booking-portal="true"/);
+ }
+});
+
+test('all booking surfaces use Jasperlimo account without old account links',()=>{
+ for(const prefix of ['', '/zh', '/es', '/ja', '/ko']){
+  for(const path of ['/', '/book/', '/my-booking/', '/routes/los-angeles-lax/', '/routes/irvine-lax/']){
+   const html=render(prefix+path);
+   assert.ok(!html.includes('customer.moovs.app/limomoli-inc'),prefix+path);
+   assert.ok(html.includes('customer.moovs.app/jasper-limousine-service'),prefix+path);
+  }
  }
 });

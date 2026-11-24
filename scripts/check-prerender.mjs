@@ -21,7 +21,7 @@ for (const route of paths) {
   assert.ok(html.includes(`href="https://jasperlax.com${route}"`), `${route}: canonical`);
   assert.ok(html.includes('wa.me/16267042786'), `${route}: confirmed WhatsApp`);
   assert.ok(html.includes('rel="describedby" type="text/plain" href="https://jasperlax.com/llms.txt"'),`${route}: discoverable AI content guide`);
-  if(parseLocale(route).path==='/') assert.ok(html.includes('src="https://customer.moovs.app/limomoli-inc/new/info"'),`${route}: homepage full-portal compatibility candidate stays on JasperLAX account`);
+  if(parseLocale(route).path==='/') assert.ok(html.includes('src="https://customer.moovs.app/jasper-limousine-service/new/info"'),`${route}: homepage full-portal compatibility candidate uses the shared Jasperlimo account`);
   const graph = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
   assert.ok(graph['@graph'].every(item => !('offers' in item)), 'Unconfirmed prices cannot enter schema');
   assert.equal((html.match(/rel="canonical"/g)||[]).length,1,`${route}: exactly one canonical`);
@@ -49,7 +49,7 @@ for (const route of paths) {
   }
   assert.ok(!html.includes('This preview does not collect reservations') && !html.includes('before the booking service launches'), `${route}: no obsolete preview privacy notice`);
   if (/\/routes\/(irvine|anaheim|pasadena)-lax\/$/.test(route)) {
-    assert.ok(html.includes('class="inner-page city-route-page"') && html.includes('https://customer.moovs.app/limomoli-inc/iframe'), `${route}: city landing page and authorized booking`);
+    assert.ok(html.includes('class="inner-page city-route-page"') && html.includes('https://customer.moovs.app/jasper-limousine-service/iframe'), `${route}: city landing page and authorized booking`);
     assert.ok(html.includes('class="faq-category"'), `${route}: compact city FAQ`);
     assert.ok(!html.includes('$undefined') && !html.includes('$null'), `${route}: no invented city price`);
   }
@@ -64,7 +64,7 @@ for (const route of paths) {
     assert.ok(html.includes('class="route-booking"'),`${route}: embedded booking position`);
     assert.ok(!html.includes('class="booking-pending"'),`${route}: configured booking replaces pending state`);
     assert.ok(html.includes('class="moovs-booking-frame"'),`${route}: booking iframe present`);
-    assert.ok(html.includes('src="https://customer.moovs.app/limomoli-inc/iframe"'),`${route}: exact user-provided Moovs account`);
+    assert.ok(html.includes('src="https://customer.moovs.app/jasper-limousine-service/iframe"'),`${route}: exact user-provided Moovs account`);
     assert.match(html, /<strong>\$.*?(99|119|129).*?<\/strong>/s,`${route}: starting price with dollar symbol`);
   }
 }

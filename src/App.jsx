@@ -1,5 +1,5 @@
 import BookingPortal from './BookingPortal.jsx';
-import {bookingPortalUrl} from './booking-url.mjs';
+import {bookingPortalUrl,bookingEmbedUrl,customerPortalUrl} from './booking-url.mjs';
 import MobileBooking from './MobileBooking.jsx';
 import {HeroQuote,BeforeBookingQuote,CityQuote} from './TransferQuote.jsx';
 import {quoteLanguages,cityQuoteCopy,transferQuoteUrl} from './transfer-quote.mjs';
@@ -24,13 +24,13 @@ import { ArrowUpRight, ArrowRight, House, MapPin, CalendarBlank, WhatsappLogo, L
 export const config = {
   whatsapp: '16267042786',
   lineUrl: 'https://line.me/ti/p/KE2kEevLtY',
-  customerPortalUrl: 'https://customer.moovs.app/limomoli-inc/user/orders',
+  customerPortalUrl,
   bookingUrl: '/book/',
   // Local compatibility candidate only: Moovs officially supports /iframe, not this full portal embed.
   // Keep the generated iframe for other pages until the complete flow is validated.
-  homeBookingEmbedUrl: 'https://customer.moovs.app/limomoli-inc/new/info',
-  // Use the src from JasperLAX's Moovs-generated iFrame code, never the portal link.
-  bookingEmbedUrl: 'https://customer.moovs.app/limomoli-inc/iframe'
+  homeBookingEmbedUrl: bookingPortalUrl,
+  // Standard iframe endpoint for the shared Jasperlimo account.
+  bookingEmbedUrl
 };
 export const routes = [['los-angeles-lax', 'Los Angeles', 99], ['orange-county-lax', 'Orange County', 119], ['san-bernardino-lax', 'San Bernardino', 129], ['riverside-lax', 'Riverside', 129]];
 export const basePaths = ['/', '/routes/', ...routes.map(([s]) => `/routes/${s}/`), ...cityRoutes.map(([s]) => `/routes/${s}/`), '/book/', '/my-booking/', '/toyota-sienna/', '/faq/', '/lax-pickup-guide/', '/about/', '/contact/', '/policies/', '/privacy/'];
