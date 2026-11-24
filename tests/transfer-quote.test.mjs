@@ -79,3 +79,11 @@ test('direct Moovs booking clicks remain entry clicks',()=>{
  assert.equal(contactEntry('https://customer.moovs.app/limomoli-inc/new/info','home_hero').event,'booking_click');
  assert.equal(contactEntry('https://customer.moovs.app/another-account/new/info'),null);
 });
+test('direct booking entries have an immediate portal with a website return control',()=>{
+ for(const prefix of ['', '/zh', '/es', '/ja', '/ko']){
+  const html=render(prefix+'/');
+  assert.match(html,/<dialog[^>]*class="booking-portal"/);
+  assert.match(html,/class="booking-portal-back"/);
+  assert.match(html,/class="toolbar-book"[^>]*data-booking-portal="true"/);
+ }
+});

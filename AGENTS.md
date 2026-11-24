@@ -108,3 +108,7 @@ Owner pricing update, 2026-10-21: Los Angeles private day charter is USD480 for1
 2026-11-23 owner requests homepage hero Book Your Ride and fixed mobile toolbar Book navigate directly to the existing Moovs full booking portal https://customer.moovs.app/limomoli-inc/new/info, without a local /book/ page or scroll-to-form intermediate step. Apply corresponding home hero entries across locales; keep other booking surfaces unchanged. Preserve booking_click as entry-only analytics. Implemented locally; this follow-up is not yet authorized for publication.
 
 2026-11-23 owner explicitly authorizes publishing the direct Moovs booking links as Web1.4.3 to the original production target.
+
+2026-11-23 correction: user reports direct Moovs navigation removed the website return control. Supersedes the previous direct-navigation behavior for normal clicks: hero and mobile toolbar now immediately open a shared native modal containing the existing full Moovs portal, with localized Back to website always above the iframe. No intermediate form click. Close returns to the original page/scroll position; same iframe persists across both entry buttons. External href remains a no-JS/modifier-click fallback. This correction is local pending release authorization.
+
+2026-11-23 owner explicitly authorizes publishing the booking return-control correction as Web1.4.4 to the original production target.
