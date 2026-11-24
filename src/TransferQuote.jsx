@@ -1,3 +1,4 @@
+import {bookingPortalUrl} from './booking-url.mjs';
 import React,{useContext} from 'react';
 import {LanguageContext,localePath} from './i18n.jsx';
 import {quoteCopy,transferQuoteUrl,cityQuoteCopy} from './transfer-quote.mjs';
@@ -12,7 +13,7 @@ function QuoteButton({children,city,placement}){
 }
 export function HeroQuote(){
  const lang=useContext(LanguageContext),c=quoteCopy[lang];
- return <div className="hero-route-quote"><p className="quote-price-explanation">{c.price}</p><p className="quote-rate-note">{c.rates}</p><div className="quote-actions"><QuoteButton placement="home_hero">{c.quote}</QuoteButton><a className="quote-secondary" href={localePath('/book/',lang)} data-entry-location="home_hero">{c.book}</a></div><p className="quote-helper">{c.helper}</p><ContactOptions placement="home_hero"/></div>;
+ return <div className="hero-route-quote"><p className="quote-price-explanation">{c.price}</p><p className="quote-rate-note">{c.rates}</p><div className="quote-actions"><QuoteButton placement="home_hero">{c.quote}</QuoteButton><a className="quote-secondary" href={bookingPortalUrl} data-entry-location="home_hero">{c.book}</a></div><p className="quote-helper">{c.helper}</p><ContactOptions placement="home_hero"/></div>;
 }
 export function BeforeBookingQuote(){
  const lang=useContext(LanguageContext),c=quoteCopy[lang];

@@ -18,7 +18,7 @@ test('both homepages put quote and direct booking links inside the hero',()=>{
   const html=render(prefix+'/');const hero=html.split('class="hero hero-quote"')[1].split('</section>')[0];
   assert.ok(hero.includes(quoteCopy[lang].price));assert.ok(hero.includes(quoteCopy[lang].rates));
   assert.ok(hero.includes(quoteCopy[lang].helper));
-  assert.ok(hero.includes(`href="${prefix}/book/" data-entry-location="home_hero"`));
+  assert.ok(hero.includes('href="https://customer.moovs.app/limomoli-inc/new/info" data-entry-location="home_hero"'));
   assert.match(hero,/href="sms:\+16267042786"/);assert.match(hero,/href="tel:\+16267042786"/);
   assert.ok(hero.includes(transferQuoteUrl(lang).replaceAll('&','&amp;')));
   assert.doesNotMatch(hero,/<form|route-inquiry|quote-expand|href="mailto:/);
@@ -65,4 +65,17 @@ test('SMS, calls, WhatsApp and booking are separate entry clicks, never confirme
  assert.equal(contactEntry('/zh/tour-charter/'),null);
  assert.equal(contactEntry('https://waXme/123'),null);
  assert.deepEqual(contactEntry('tel:+16267042786','private@example.com'),{event:'phone_click'});
+});
+
+test('mobile toolbar opens the original Moovs portal directly in every locale',()=>{
+ for(const prefix of ['', '/zh', '/es', '/ja', '/ko']){
+  for(const path of ['/', '/book/']){
+   const html=render(prefix+path);
+   assert.match(html,/class="toolbar-book" href="https:\/\/customer.moovs.app\/limomoli-inc\/new\/info"/);
+  }
+ }
+});
+test('direct Moovs booking clicks remain entry clicks',()=>{
+ assert.equal(contactEntry('https://customer.moovs.app/limomoli-inc/new/info','home_hero').event,'booking_click');
+ assert.equal(contactEntry('https://customer.moovs.app/another-account/new/info'),null);
 });

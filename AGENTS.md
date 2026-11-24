@@ -104,3 +104,7 @@ Owner pricing update, 2026-10-21: Los Angeles private day charter is USD480 for1
 2026-11-23 mobile Moovs time-confirmation fix: owner approves local implementation. On screens <=700px, open the existing iframe in a viewport-sized booking panel with a localized Back to website control. Keep iframe mounted to preserve input on close/reopen, allow internal scrolling, and hide host floating contacts/navigation/analytics while open. Disable homepage brand-header cropping only inside the mobile panel so Moovs modal headings and close buttons stay visible. Desktop embeds retain their existing size/crop; preserve the same Moovs URLs/account. No production publication authorized for this fix.
 
 2026-11-23 owner explicitly authorizes saving and publishing the mobile booking confirmation fix to the original jasperlax.com production target as Web1.4.2. Verify live after deployment.
+
+2026-11-23 owner requests homepage hero Book Your Ride and fixed mobile toolbar Book navigate directly to the existing Moovs full booking portal https://customer.moovs.app/limomoli-inc/new/info, without a local /book/ page or scroll-to-form intermediate step. Apply corresponding home hero entries across locales; keep other booking surfaces unchanged. Preserve booking_click as entry-only analytics. Implemented locally; this follow-up is not yet authorized for publication.
+
+2026-11-23 owner explicitly authorizes publishing the direct Moovs booking links as Web1.4.3 to the original production target.

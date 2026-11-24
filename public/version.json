@@ -1,6 +1,6 @@
 {
-  "name": "JasperLAX.com Web 1.4.2",
-  "version": "1.4.2",
+  "name": "JasperLAX.com Web 1.4.3",
+  "version": "1.4.3",
   "release_date": "2026-11-23",
   "changes": [
     "Five-county service coverage and Irvine, Anaheim and Pasadena landing pages in five languages",
@@ -27,9 +27,10 @@
     "Reduced homepage Moovs iframe whitespace with scrolling preserved for longer forms",
     "Inline email inquiry form cancelled by owner; WhatsApp restored and no SMTP service or credentials included",
     "All seven public Google reviews verified on 2026-11-23, preserving original English/Japanese text and rating-only entries across five languages",
-    "Mobile viewport-sized booking panel keeps time confirmation actions visible, hides overlapping site controls and preserves input when returning to the website"
+    "Mobile viewport-sized booking panel keeps time confirmation actions visible, hides overlapping site controls and preserves input when returning to the website",
+    "Homepage hero and mobile toolbar booking buttons navigate directly to the original Moovs booking portal, retaining entry-click analytics"
   ],
-  "revision": 3,
+  "revision": 4,
   "integration_notes": [
     "Full portal iframe is a compatibility integration outside Moovs documented supported embed options.",
     "Flight fields and responsive presentation verified; login, payment and completed reservations not verified.",

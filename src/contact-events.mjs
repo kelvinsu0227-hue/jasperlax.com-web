@@ -1,3 +1,4 @@
+import {bookingPortalUrl} from './booking-url.mjs';
 const placements=new Set(['home_hero','book_quote','city_quote']);
 export function contactEntry(href,placement){
  let event;
@@ -6,6 +7,6 @@ export function contactEntry(href,placement){
  else if(href.startsWith('mailto:'))event='email_click';
  else if(/^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(href))event='whatsapp_click';
  else if(href.startsWith('https://line.me/'))event='line_click';
- else if(/\/(book)\/?$/.test(href)||['#booking','#book-ride','#transfer-booking-form'].includes(href))event='booking_click';
+ else if(href===bookingPortalUrl||/\/(book)\/?$/.test(href)||['#booking','#book-ride','#transfer-booking-form'].includes(href))event='booking_click';
  return event?{event,...(placements.has(placement)?{entry_location:placement}:{})}:null;
 }
